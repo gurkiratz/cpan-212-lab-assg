@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games Collection</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            color: #ff4500;
+            margin-top: 20px;
+        }
+        .game-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+        .game {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            padding: 20px;
+            width: 300px;
+            transition: transform 0.3s;
+        }
+        .game:hover {
+            transform: scale(1.05);
+        }
+        .game h2 {
+            color: #4682b4;
+            font-size: 24px;
+        }
+        .game p {
+            color: #696969;
+            font-size: 16px;
+        }
+        .play-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #32cd32;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .play-button:hover {
+            background-color: #228b22;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to the Games Collection!</h1>
+    <div class="game-container">
+        <!-- Game 1 -->
+        <div class="game">
+            <h2>Chess</h2>
+            <p>Test your strategic thinking with this classic board game. Outsmart your opponent and capture their king!</p>
+            <a href="#" class="play-button">Play Now</a>
+        </div>
+        <!-- Game 2 -->
+        <div class="game">
+            <h2>Sudoku</h2>
+            <p>Challenge yourself with Sudoku puzzles. Fill the grid with numbers, but don't repeat in any row, column, or block.</p>
+            <a href="#" class="play-button">Play Now</a>
+        </div>
+        <!-- Game 3 -->
+        <div class="game">
+            <h2>Tic Tac Toe</h2>
+            <p>A simple yet fun game of Xs and Os. Get three in a row before your opponent does!</p>
+            <a href="#" class="play-button">Play Now</a>
+        </div>
+        <!-- Game 4 -->
+        <div class="game">
+            <h2>Memory Match</h2>
+            <p>Flip the cards and find matching pairs. How good is your memory?</p>
+            <a href="#" class="play-button">Play Now</a>
+        </div>
+        <!-- Game 5 -->
+        <div class="game">
+            <h2>Snake</h2>
+            <p>Control the snake and eat the food! But beware, the snake grows longer with each bite!</p>
+            <a href="#" class="play-button">Play Now</a>
+        </div>
+    </div>
+</body>
+</html>
