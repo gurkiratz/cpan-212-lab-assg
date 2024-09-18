@@ -46,19 +46,35 @@ GET /name/garry -> Howdy doody garry
 POST /add?x=5&y=10 -> 15
 ```
 
-#### 3. **Calculate**
+#### 4. **Calculate**
 
 **Endpoint**: `Post /calculate`
 
-**Description:** Do Add, Sub, Div, Multi, Expo calculations
+**Description:** Perform Addition, Subtraction, Division, Multiplication operations
 
 **Query Params**
 - `a` : number (default 5)
-- `b` : number (default 5)
+- `b` : number (default 7)
+- `calc` : string (use `%2B` for `+`, `%2D` for `-`, `%2A` for `*`, and `%2F` for `/`)
 
 **Example Request:**
-```http
-POST /calculate?a=5&b=10
+- **Addition**
+```bash
+curl -X POST "http://localhost:3000/calculate?a=5&b=10&calc=%2B"
+# 15
 ```
-
-hello
+- **Subtraction**
+```bash
+curl -X POST "http://localhost:3000/calculate?a=10&b=5&calc=%2D"
+# output 5
+```
+- **Multiplication**
+```bash
+curl -X POST "http://localhost:3000/calculate?a=5&b=10&calc=%2A"
+# output 50
+```
+- **Division**
+```bash
+curl -X POST "http://localhost:3000/calculate?a=10&b=5&calc=%2F"
+# output 2
+```

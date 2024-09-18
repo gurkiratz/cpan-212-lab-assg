@@ -38,16 +38,39 @@ router.post('/add', (req,res) => {
 })
 
 router.post('/calculate', (req, res) => {
-  const a = parseFloat(req.query.a) || 5;
-  const b = parseFloat(req.query.b) || 5;
-  const output = `
-  Addition: ${a+b}
-  Subtraction: ${a-b}
-  Multiplication: ${a*b}
-  Division: ${Math.round(a/b)}
-  Exponential: ${a**b}
-  `
-  res.send(output)
+  const { a: numA, b: numB, calc } = req.query;
+
+  const a = parseFloat(numA) || 5;
+  const b = parseFloat(numB) || 7;
+
+  if (isNaN(a) || isNaN(b)) {
+    return res.status(400).json({ error: 'Invalid numbers' });
+}
+
+  let result
+  console.log(calc)
+
+  switch(calc) {
+    case '+' || 'add':
+      result = a + b
+      break
+    case '-' || 'sub':
+      result = a-b
+      break
+    case '*' || 'multiply':
+      result=a*b
+      break
+    case '/' || 'divide':
+      if (b===0) {
+        return res.status(400).json({error: 'Division by zero is invalid'})
+      }
+      result = a/b
+      break
+    default:
+      return res.status(400).json({error: 'Invalid operator. Calculation not completed'})
+
+  }
+  res.json({ a,b,calc,result });
 })
 
 module.exports = router
