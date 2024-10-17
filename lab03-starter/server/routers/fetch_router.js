@@ -4,6 +4,7 @@ const fs = require('fs')
 const path = require('path')
 const upload_directory = path.join(__dirname, '../uploads')
 const _ = require('lodash')
+const axios = require('axios')
 
 router.get('/single', (req, res) => {
   // we read the directory items synchronously to not trip the async speed
@@ -20,6 +21,7 @@ router.get('/single', (req, res) => {
   res.sendFile(path.join(upload_directory, filename))
 })
 
+// fetch multiple images from uploads directory
 router.get('/multiple', (req, res) => {
   const uploadsDir = path.join(__dirname, '../uploads')
   fs.readdir(uploadsDir, (err, files) => {
@@ -29,20 +31,20 @@ router.get('/multiple', (req, res) => {
     const images = files.map((file) => `uploads/${file}`)
     res.json(_.sampleSize(images, 3))
   })
+})
 
-  // let files_array = fs.readdirSync(upload_directory)
-  // if (files_array.length == 0) {
-  //   console.log('no images')
-  //   return res.status(503).send({
-  //     message: 'No images',
-  //   })
-  // }
-  // let filenames = _.sampleSize(files_array, 3)
-  // let files = filenames.map((filename) => {
-  //   return path.join(upload_directory, filename)
-  // })
-  // console.log(JSON.stringify(files))
-  // res.status(200).json(files)
+// Get a random image from picsum.photos
+router.get('/random-image', async (req, res) => {
+  try {
+    const response = await axios({
+      url: 'https://picsum.photos/300/300',
+      responseType: 'stream',
+    })
+    res.setHeader('Content-Type', 'image/jpeg')
+    response.data.pipe(res)
+  } catch (error) {
+    res.status(500).send('Error fetching image')
+  }
 })
 
 module.exports = router

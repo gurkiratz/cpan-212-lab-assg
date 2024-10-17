@@ -66,3 +66,8 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.section {
+  margin: 5em 0;
+  background-color: #1a1a1a;
+}
